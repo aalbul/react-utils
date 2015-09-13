@@ -1,6 +1,6 @@
 'use strict';
 
-export default {
+module.exports = {
     map: function(children, mapper){
         if(!children){ return []; }
         if(!Array.isArray(children)){ children = [children]; }
