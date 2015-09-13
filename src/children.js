@@ -13,8 +13,10 @@ export default {
     },
     at: function(children, index){
         if(!children){ return; }
-        if(!Array.isArray(children) && index > 0){ return; }
-        if(!Array.isArray(children) && index === 0){ return children; }
+        if(!Array.isArray(children)){
+            if(index > 0){ return; }
+            if(index === 0){ return children; }
+        }
         return children[index];
     }
 };
