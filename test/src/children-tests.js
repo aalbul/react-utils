@@ -1,11 +1,13 @@
+/*  eslint no-unused-expressions:0  */
+
 'use strict';
 
 const sinon = require('sinon');
-const childrenUtils = require(__srcPath + '/children');
+const childrenUtils = require(global.__srcPath + '/children');
 
 describe('children map', () => {
     it('should return an empty array if there are no children', () => {
-        const children = undefined;
+        let children = null;
         let mapped = childrenUtils.map(children);
         mapped.should.be.empty;
     });
@@ -19,13 +21,13 @@ describe('children map', () => {
     it('should call the mapper for every child', () => {
         const children = [{}, {}];
         let mapper = sinon.spy();
-        let mapped = childrenUtils.map(children, mapper);
+        childrenUtils.map(children, mapper);
         mapper.should.have.been.calledTwice;
     });
 
     it('should return an array of correctly mapped children', () => {
         const children = [{x: 1}, {x: 2}];
-        let mapper = (c) => { return { x: c.x * 2} ; };
+        let mapper = (c) => { return { x: c.x * 2}; };
         let mapped = childrenUtils.map(children, mapper);
         mapped[0].x.should.equal(2);
         mapped[1].x.should.equal(4);
@@ -34,7 +36,7 @@ describe('children map', () => {
 
 describe('children count', () => {
     it('should return zero if there are no children', () => {
-        const children = undefined;
+        let children = null;
         let count = childrenUtils.count(children);
         count.should.be.equal(0);
     });
@@ -54,7 +56,7 @@ describe('children count', () => {
 
 describe('children at', () => {
     it('should return undefined if there are no children', () => {
-        const children = undefined;
+        let children = null;
         let element = childrenUtils.at(children, 0);
         should.not.exist(element);
     });

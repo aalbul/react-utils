@@ -18,13 +18,14 @@ gulp.task('babel', ['clean'], function(){
 });
 
 gulp.task('lint', function(){
-    return gulp.src(['src/**/*.js'])
+    return gulp.src(['src/**/*.js', 'test/**/*.js'])
         .pipe(eslint())
         .pipe(eslint.format())
 });
 
 gulp.task('watch', function() {
     gulp.watch('src/**/*.js', ['lint']);
+    gulp.watch('test/**/*.js', ['lint']);
 });
 
 gulp.task('build', ['clean', 'babel']);
