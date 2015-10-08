@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "npm run build-lib",
-    "build-lib": "./node_modules/.bin/gulp build",
+    "build-lib": "npm run babel",
+    "babel": "rimraf lib && babel --stage 0 src/ -d lib/",
     "test": "./node_modules/.bin/mocha --compilers js:babel/register -r ./test/support/env -R spec --recursive ./test",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- --compilers js:babel/register -r ./test/support/env -R spec --recursive ./test",
     "test-travis": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --compilers js:babel/register -r ./test/support/env -R spec --recursive ./test"
@@ -27,13 +28,14 @@
   "homepage": "https://github.com/alexcurtis/react-utils#readme",
   "dependencies": {
     "babel": "^5.8.23",
-    "babel-eslint": "^4.1.1",
-    "del": "^2.0.2",
-    "gulp": "^3.9.0",
-    "gulp-babel": "^5.2.1"
+    "rimraf": "^2.4.3"
   },
   "devDependencies": {
+    "babel-eslint": "^4.1.1",
     "chai": "^3.2.0",
+    "del": "^2.0.2",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.2.1",
     "gulp-eslint": "^1.0.0",
     "istanbul": "^0.3.19",
     "mocha": "^2.3.2",
