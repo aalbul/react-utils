@@ -1,9 +1,11 @@
 'use strict';
 
+const collectionUtils = require('./collection');
+
 export default {
     map: function(children, mapper){
         if(!children){ return []; }
-        if(!Array.isArray(children)){ children = [children]; }
+        if(!collectionUtils.canMap(children)){ children = [children]; }
         return children.map(mapper);
     },
     count: function(children){

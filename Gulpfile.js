@@ -1,7 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
-var eslint= require('gulp-eslint');
+var eslint = require('gulp-eslint');
 var del = require('del');
 var babel = require('gulp-babel');
 
